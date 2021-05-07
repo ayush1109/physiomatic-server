@@ -1,4 +1,4 @@
-const Examination = require('../../models/assessment/Examination');
+const Examination = require('../../models/assessmentModel/Examination');
 
 exports.addExamination = async(req, res) => {
     Examination.create(req.body)
