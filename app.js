@@ -13,6 +13,8 @@ const invoiceRoutes = require("./routes/invoiceRoutes");
 const exerciseRoutes = require("./routes/exercise");
 const chiefComplaintsRoutes = require('./routes/chiefComplaintsRoutes');
 const demographicDataRoutes = require('./routes/demograhicDataRoutes');
+const examinationRoutes = require('./routes/examinationRouter');
+
 const app = express();
 // cors
 app.use(cors());
@@ -57,6 +59,7 @@ app.use("/api/invoice", invoiceRoutes);
 app.use("/api/exercise", exerciseRoutes);
 app.use('/api/chiefComplaint', chiefComplaintsRoutes);
 app.use('/api/demograhicData', demographicDataRoutes);
+app.use('/api/examination', examinationRoutes);
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
