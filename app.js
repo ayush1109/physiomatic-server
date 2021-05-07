@@ -11,9 +11,9 @@ const treatmentRoutes = require("./routes/treatmentRoutes");
 const feedbackRoutes = require("./routes/feedbackRoutes");
 const invoiceRoutes = require("./routes/invoiceRoutes");
 const exerciseRoutes = require("./routes/exercise");
-const chiefComplaintsRoutes = require('./routes/chiefComplaintsRoutes');
-const demographicDataRoutes = require('./routes/demograhicDataRoutes');
-const examinationRoutes = require('./routes/examinationRouter');
+const chiefComplaintsRoutes = require('./routes/assessment/chiefComplaintsRoutes');
+const demographicDataRoutes = require('./routes/assessment/demograhicDataRoutes');
+const examinationRoutes = require('./routes/assessment/examinationRouter');
 
 const app = express();
 // cors

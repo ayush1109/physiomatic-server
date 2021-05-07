@@ -9,7 +9,7 @@ const {
   updateExamination,
   deleteExamination,
   deleteExaminations
-} = require("../controller/examinationController");
+} = require("../../controller/assessment/examinationController");
 
 router.post(
   "/add",

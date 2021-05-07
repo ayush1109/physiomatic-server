@@ -1,9 +1,9 @@
-const Examination = require('../models/Examination');
+const ChiefComplaints = require('../models/assessment/ChiefComplaints');
 
-exports.addExamination = async(req, res) => {
-    Examination.create(req.body)
-    .then((data) => {
-        res.json(data);
+exports.addChiefComplaint = async(req, res) => {
+    ChiefComplaints.create(req.body)
+    .then((complaint) => {
+        res.json(complaint);
     })
     .catch((err) => {
         return res
@@ -12,10 +12,10 @@ exports.addExamination = async(req, res) => {
       });
 }
 
-exports.getExaminations = async(req, res) => {
-    Examination.find()
-    .then((data) => {
-        res.json(data)
+exports.getChiefComplaints = async(req, res) => {
+    ChiefComplaints.find()
+    .then((complaints) => {
+        res.json(complaints)
     })
     .catch((err) => {
         return res
@@ -24,12 +24,12 @@ exports.getExaminations = async(req, res) => {
       });
 }
 
-exports.updateExamination = async(req, res) => {
-    Examination.findByIdAndUpdate(req.params.dataId, {
+exports.updateChiefComplaint = async(req, res) => {
+    ChiefComplaints.findByIdAndUpdate(req.params.complaintId, {
         $set: req.body
     }, { new: true })
-        .then((data) => {
-            res.json(data);
+        .then((complaint) => {
+            res.json(complaint);
         })
         .catch((err) => {
             return res
@@ -38,10 +38,10 @@ exports.updateExamination = async(req, res) => {
           });
 }
 
-exports.deleteExamination = async (req, res) => {
-    Examination.findByIdAndRemove(req.params.dataId)
-        .then((data) => {
-            res.json(data);
+exports.deleteChiefComplaint = async (req, res) => {
+    ChiefComplaints.findByIdAndRemove(req.params.complaintId)
+        .then((complaint) => {
+            res.json(complaint);
         })
         .catch((err) => {
             return res
@@ -51,10 +51,10 @@ exports.deleteExamination = async (req, res) => {
 }
 
 
-exports.deleteExaminations = async (req, res) => {
-    Examination.remove({})
-        .then((data) => {
-            res.json(data);
+exports.deleteChiefComplaints = async (req, res) => {
+    ChiefComplaints.remove({})
+        .then((complaints) => {
+            res.json(complaints);
         })
         .catch((err) => {
             return res
@@ -63,10 +63,10 @@ exports.deleteExaminations = async (req, res) => {
           });
 }
 
-exports.getExamination = async(req, res) => {
-    Examination.findById(req.params.dataId)
-    .then((data) => {
-        res.json(data)
+exports.getChiefComplaint = async(req, res) => {
+    ChiefComplaints.findById(req.params.complaintId)
+    .then((complaint) => {
+        res.json(complaint)
     })
     .catch((err) => {
         return res

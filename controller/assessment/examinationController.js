@@ -1,7 +1,7 @@
-const DemographicData = require('../models/DemographicData');
+const Examination = require('../../models/assessment/Examination');
 
-exports.addDemographicData = async(req, res) => {
-    DemographicData.create(req.body)
+exports.addExamination = async(req, res) => {
+    Examination.create(req.body)
     .then((data) => {
         res.json(data);
     })
@@ -12,10 +12,10 @@ exports.addDemographicData = async(req, res) => {
       });
 }
 
-exports.getDemographicDatas = async(req, res) => {
-    DemographicData.find()
-    .then((datas) => {
-        res.json(datas)
+exports.getExaminations = async(req, res) => {
+    Examination.find()
+    .then((data) => {
+        res.json(data)
     })
     .catch((err) => {
         return res
@@ -24,8 +24,8 @@ exports.getDemographicDatas = async(req, res) => {
       });
 }
 
-exports.updateDemographicData = async(req, res) => {
-    DemographicData.findByIdAndUpdate(req.params.dataId, {
+exports.updateExamination = async(req, res) => {
+    Examination.findByIdAndUpdate(req.params.dataId, {
         $set: req.body
     }, { new: true })
         .then((data) => {
@@ -38,8 +38,8 @@ exports.updateDemographicData = async(req, res) => {
           });
 }
 
-exports.deleteDemographicData = async (req, res) => {
-    DemographicData.findByIdAndRemove(req.params.dataId)
+exports.deleteExamination = async (req, res) => {
+    Examination.findByIdAndRemove(req.params.dataId)
         .then((data) => {
             res.json(data);
         })
@@ -51,10 +51,10 @@ exports.deleteDemographicData = async (req, res) => {
 }
 
 
-exports.deleteDemographicDatas = async (req, res) => {
-    DemographicData.remove({})
-        .then((datas) => {
-            res.json(datas);
+exports.deleteExaminations = async (req, res) => {
+    Examination.remove({})
+        .then((data) => {
+            res.json(data);
         })
         .catch((err) => {
             return res
@@ -63,8 +63,8 @@ exports.deleteDemographicDatas = async (req, res) => {
           });
 }
 
-exports.getDemographicData = async(req, res) => {
-    DemographicData.findById(req.params.dataId)
+exports.getExamination = async(req, res) => {
+    Examination.findById(req.params.dataId)
     .then((data) => {
         res.json(data)
     })

@@ -1,9 +1,9 @@
-const ChiefComplaints = require('../models/ChiefComplaints');
+const DemographicData = require('../models/assessment/DemographicData');
 
-exports.addChiefComplaint = async(req, res) => {
-    ChiefComplaints.create(req.body)
-    .then((complaint) => {
-        res.json(complaint);
+exports.addDemographicData = async(req, res) => {
+    DemographicData.create(req.body)
+    .then((data) => {
+        res.json(data);
     })
     .catch((err) => {
         return res
@@ -12,10 +12,10 @@ exports.addChiefComplaint = async(req, res) => {
       });
 }
 
-exports.getChiefComplaints = async(req, res) => {
-    ChiefComplaints.find()
-    .then((complaints) => {
-        res.json(complaints)
+exports.getDemographicDatas = async(req, res) => {
+    DemographicData.find()
+    .then((datas) => {
+        res.json(datas)
     })
     .catch((err) => {
         return res
@@ -24,12 +24,12 @@ exports.getChiefComplaints = async(req, res) => {
       });
 }
 
-exports.updateChiefComplaint = async(req, res) => {
-    ChiefComplaints.findByIdAndUpdate(req.params.complaintId, {
+exports.updateDemographicData = async(req, res) => {
+    DemographicData.findByIdAndUpdate(req.params.dataId, {
         $set: req.body
     }, { new: true })
-        .then((complaint) => {
-            res.json(complaint);
+        .then((data) => {
+            res.json(data);
         })
         .catch((err) => {
             return res
@@ -38,10 +38,10 @@ exports.updateChiefComplaint = async(req, res) => {
           });
 }
 
-exports.deleteChiefComplaint = async (req, res) => {
-    ChiefComplaints.findByIdAndRemove(req.params.complaintId)
-        .then((complaint) => {
-            res.json(complaint);
+exports.deleteDemographicData = async (req, res) => {
+    DemographicData.findByIdAndRemove(req.params.dataId)
+        .then((data) => {
+            res.json(data);
         })
         .catch((err) => {
             return res
@@ -51,10 +51,10 @@ exports.deleteChiefComplaint = async (req, res) => {
 }
 
 
-exports.deleteChiefComplaints = async (req, res) => {
-    ChiefComplaints.remove({})
-        .then((complaints) => {
-            res.json(complaints);
+exports.deleteDemographicDatas = async (req, res) => {
+    DemographicData.remove({})
+        .then((datas) => {
+            res.json(datas);
         })
         .catch((err) => {
             return res
@@ -63,10 +63,10 @@ exports.deleteChiefComplaints = async (req, res) => {
           });
 }
 
-exports.getChiefComplaint = async(req, res) => {
-    ChiefComplaints.findById(req.params.complaintId)
-    .then((complaint) => {
-        res.json(complaint)
+exports.getDemographicData = async(req, res) => {
+    DemographicData.findById(req.params.dataId)
+    .then((data) => {
+        res.json(data)
     })
     .catch((err) => {
         return res
