@@ -1,4 +1,4 @@
-const ChiefComplaints = require('../models/assessment/ChiefComplaints');
+const ChiefComplaints = require('../../models/assessmentModel/ChiefComplaints');
 
 exports.addChiefComplaint = async(req, res) => {
     ChiefComplaints.create(req.body)

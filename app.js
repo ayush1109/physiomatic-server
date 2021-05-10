@@ -14,6 +14,8 @@ const exerciseRoutes = require("./routes/exercise");
 const chiefComplaintsRoutes = require('./routes/assessmentRoutes/chiefComplaintsRoutes');
 const demographicDataRoutes = require('./routes/assessmentRoutes/demograhicDataRoutes');
 const examinationRoutes = require('./routes/assessmentRoutes/examinationRouter');
+const painRoutes = require('./routes/assessmentRoutes/painRouter');
+const sensoryRoutes = require('./routes/assessmentRoutes/sensoryRoutes');
 
 const app = express();
 // cors
@@ -60,6 +62,9 @@ app.use("/api/exercise", exerciseRoutes);
 app.use('/api/chiefComplaint', chiefComplaintsRoutes);
 app.use('/api/demograhicData', demographicDataRoutes);
 app.use('/api/examination', examinationRoutes);
+app.use('/api/pain', painRoutes);
+app.use('/api/sensory', sensoryRoutes);
+
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

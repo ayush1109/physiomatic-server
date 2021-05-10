@@ -9,7 +9,7 @@ const {
   updateDemographicData,
   deleteDemographicData,
   deleteDemographicDatas
-} = require("../controller/demographicDataController");
+} = require("../../controller/assessmentController/demographicDataController");
 
 router.post(
   "/add",

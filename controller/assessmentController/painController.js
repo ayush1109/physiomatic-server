@@ -1,7 +1,7 @@
-const DemographicData = require('../../models/assessmentModel/DemographicData');
+const Pain = require('../../models/assessmentModel/Pain');
 
-exports.addDemographicData = async(req, res) => {
-    DemographicData.create(req.body)
+exports.addPain = async(req, res) => {
+    Pain.create(req.body)
     .then((data) => {
         res.json(data);
     })
@@ -12,8 +12,8 @@ exports.addDemographicData = async(req, res) => {
       });
 }
 
-exports.getDemographicDatas = async(req, res) => {
-    DemographicData.find()
+exports.getPains = async(req, res) => {
+    Pain.find()
     .then((datas) => {
         res.json(datas)
     })
@@ -24,8 +24,8 @@ exports.getDemographicDatas = async(req, res) => {
       });
 }
 
-exports.updateDemographicData = async(req, res) => {
-    DemographicData.findByIdAndUpdate(req.params.dataId, {
+exports.updatePain = async(req, res) => {
+    Pain.findByIdAndUpdate(req.params.painId, {
         $set: req.body
     }, { new: true })
         .then((data) => {
@@ -38,8 +38,8 @@ exports.updateDemographicData = async(req, res) => {
           });
 }
 
-exports.deleteDemographicData = async (req, res) => {
-    DemographicData.findByIdAndRemove(req.params.dataId)
+exports.deletePain = async (req, res) => {
+    Pain.findByIdAndRemove(req.params.painId)
         .then((data) => {
             res.json(data);
         })
@@ -51,8 +51,8 @@ exports.deleteDemographicData = async (req, res) => {
 }
 
 
-exports.deleteDemographicDatas = async (req, res) => {
-    DemographicData.remove({})
+exports.deletePains = async (req, res) => {
+    Pain.remove({})
         .then((datas) => {
             res.json(datas);
         })
@@ -63,8 +63,8 @@ exports.deleteDemographicDatas = async (req, res) => {
           });
 }
 
-exports.getDemographicData = async(req, res) => {
-    DemographicData.findById(req.params.dataId)
+exports.getPain = async(req, res) => {
+    Pain.findById(req.params.painId)
     .then((data) => {
         res.json(data)
     })

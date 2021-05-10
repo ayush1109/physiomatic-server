@@ -9,7 +9,7 @@ const {
   updateChiefComplaint,
   deleteChiefComplaint,
   deleteChiefComplaints
-} = require("../controller/chiefComplaintsController");
+} = require("../../controller/assessmentController/chiefComplaintsController");
 
 router.post(
   "/add",
