@@ -16,6 +16,7 @@ const demographicDataRoutes = require('./routes/assessmentRoutes/demograhicDataR
 const examinationRoutes = require('./routes/assessmentRoutes/examinationRouter');
 const painRoutes = require('./routes/assessmentRoutes/painRouter');
 const sensoryRoutes = require('./routes/assessmentRoutes/sensoryRoutes');
+const motorRoutes = require('./routes/assessmentRoutes/motorExaminationRouter');
 
 const app = express();
 // cors
@@ -64,6 +65,7 @@ app.use('/api/demograhicData', demographicDataRoutes);
 app.use('/api/examination', examinationRoutes);
 app.use('/api/pain', painRoutes);
 app.use('/api/sensory', sensoryRoutes);
+app.use('/api/motor', motorRoutes);
 
 const port = process.env.PORT || 8000;
 
