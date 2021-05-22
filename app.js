@@ -17,6 +17,14 @@ const examinationRoutes = require('./routes/assessmentRoutes/examinationRouter')
 const painRoutes = require('./routes/assessmentRoutes/painRouter');
 const sensoryRoutes = require('./routes/assessmentRoutes/sensoryRoutes');
 const motorRoutes = require('./routes/assessmentRoutes/motorExaminationRouter');
+const shoulderEvaluationRoutes = require('./routes/assessmentRoutes/shoulderEvaluationRoutes');
+const antiNatalRoutes = require('./routes/assessmentRoutes/antiNatalRoutes');
+const NeuroExamRoutes = require('./routes/assessmentRoutes/NeuroExamRoutes');
+const cardioExamRoutes = require('./routes/assessmentRoutes/cardioExamRoutes');
+const investigationExamRoutes = require('./routes/assessmentRoutes/investigationExamRoutes');
+
+
+
 
 const app = express();
 // cors
@@ -66,6 +74,11 @@ app.use('/api/examination', examinationRoutes);
 app.use('/api/pain', painRoutes);
 app.use('/api/sensory', sensoryRoutes);
 app.use('/api/motor', motorRoutes);
+app.use('/api/shoulder', shoulderEvaluationRoutes);
+app.use('/api/antiNatal', antiNatalRoutes);
+app.use('/api/neuro', NeuroExamRoutes);
+app.use('/api/cardio', cardioExamRoutes);
+app.use('/api/investigation', investigationExamRoutes);
 
 const port = process.env.PORT || 8000;
 
