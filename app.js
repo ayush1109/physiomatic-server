@@ -22,6 +22,7 @@ const antiNatalRoutes = require('./routes/assessmentRoutes/antiNatalRoutes');
 const NeuroExamRoutes = require('./routes/assessmentRoutes/NeuroExamRoutes');
 const cardioExamRoutes = require('./routes/assessmentRoutes/cardioExamRoutes');
 const investigationExamRoutes = require('./routes/assessmentRoutes/investigationExamRoutes');
+const pediatricRoutes = require('./routes/assessmentRoutes/pediatricRouter');
 
 
 
@@ -79,6 +80,7 @@ app.use('/api/antiNatal', antiNatalRoutes);
 app.use('/api/neuro', NeuroExamRoutes);
 app.use('/api/cardio', cardioExamRoutes);
 app.use('/api/investigation', investigationExamRoutes);
+app.use('/api/pediatric', pediatricRoutes);
 
 const port = process.env.PORT || 8000;
 
