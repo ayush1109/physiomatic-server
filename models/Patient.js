@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+var d = new Date();
+var month = d.getMonth() + 1;
+
 const patientSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
@@ -8,38 +11,38 @@ const patientSchema = new Schema({
   },
   firstName: {
     type: String,
-    required: true,
+    required: false,
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
   },
   patientType: {
     type: String,
-    required: true,
+    required: false,
   },
   gender: {
     type: String,
-    required: true,
+    required: false,
   },
   date: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: d.getDate() + '/' + month + '/' + d.getFullYear()
   },
   dob: {
     type: Date,
-    required: true,
+    required: false,
   },
-  clinicalRefNumber: {
+  consultant: {
     type: String,
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   mobile: {
     type: String,
-    required: true,
+    required: false,
   },
   history: [
     {
@@ -49,19 +52,19 @@ const patientSchema = new Schema({
       },
       repetition: {
         type: Number,
-        required: true,
+        required: false,
       },
       sets: {
         type: Number,
-        required: true,
+        required: false,
       },
       holdTime: {
         type: Number,
-        required: true,
+        required: false,
       },
       restTime: {
         type: Number,
-        required: true,
+        required: false,
       },
       weight: {
         type: Number,
@@ -87,7 +90,7 @@ const patientSchema = new Schema({
   pincode: String,
   contact: String,
   contactnumber: String,
-  id: String,
+  patientId: String,
   address1: String,
   address2: String,
   phone: String,

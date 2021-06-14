@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+var d = new Date();
+var month = d.getMonth() + 1;
+
 const appointmentSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
@@ -23,8 +26,8 @@ const appointmentSchema = new Schema({
     default: 0,
   },
   date: {
-    type: Date,
-    required: true,
+    type: String,
+    default: d.getDate() + '/' + month + '/' + d.getFullYear()
   },
   start: {
     type: Date,

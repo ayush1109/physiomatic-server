@@ -4,6 +4,7 @@ exports.addPatient = (req, res) => {
   const patientData = { ...req.body };
 
   patientData.user = req.user._id;
+  if(req.body.dob) {
   const dmy = req.body.dob.split("/");
   const d = dmy[0];
   const m = dmy[1] - 1;
@@ -14,7 +15,8 @@ exports.addPatient = (req, res) => {
   const min = Math.abs(offset) % 60;
   if (offset < 0) {
     patientData.dob = new Date(y, m, d, hour, min);
-  } else patientData.dob(y, m, d, -hours, -min);
+  } else patientData.dob(y, m, d, -hour, -min);
+}
   const newPatient = new Patient(patientData);
   newPatient
     .save()
@@ -59,4 +61,19 @@ exports.deletePatient = (req, res) => {
     .catch((err) => {
       return res.status(400).json({ message: "Something went wrong", err });
     });
+};
+
+exports.editPatient = async (req, res) => {
+
+  Patient.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: req.body },
+    { new: true }
+  ).then((patient) => {
+    console.log("patient updated", patient);
+    return res.json({ patient });
+  })
+  .catch((err) => {
+    return res.status(400).json({ message: "Something went wrong", err });
+  });
 };

@@ -5,6 +5,7 @@ const {
   addPatient,
   getPatient,
   getAllUserPatients,
+  editPatient,
   deletePatient,
 } = require("../controller/patientController");
 
@@ -27,6 +28,12 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   getAllUserPatients
 );
+
+router.put(
+  "/edit/:id",
+  passport.authenticate("jwt", { session: false }),
+  editPatient
+)
 
 router.delete("/delete/:id", deletePatient);
 

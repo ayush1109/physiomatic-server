@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const pediatricEvaluationSchema = new Schema({
+const pediatricEvaluationSchema = new Schema({ 
     assessmentDate: {
         type: Date,
         required: false
@@ -58,6 +58,20 @@ const pediatricEvaluationSchema = new Schema({
         type: String,
         required: false
     },
+
+    supine: {
+        type: String,
+        required: false
+    },
+    prone: {
+        type: String,
+        required: false
+    },
+    sitting: {
+        type: String,
+        required: false
+    },
+
     socialSmile: {
         type: String,
         required: false

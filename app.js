@@ -23,8 +23,11 @@ const NeuroExamRoutes = require('./routes/assessmentRoutes/NeuroExamRoutes');
 const cardioExamRoutes = require('./routes/assessmentRoutes/cardioExamRoutes');
 const investigationExamRoutes = require('./routes/assessmentRoutes/investigationExamRoutes');
 const pediatricRoutes = require('./routes/assessmentRoutes/pediatricRouter');
-
-
+const kneeRoutes = require('./routes/others/kneeRouter');
+const incomeRoutes = require('./routes/others/incomeRouter');
+const expenseRoutes = require('./routes/others/expenseRouter');
+const uploadRoutes = require('./routes/uploadRouter');
+const staffRoutes = require('./routes/others/staffRouter');
 
 
 const app = express();
@@ -36,6 +39,7 @@ app.use(cors());
 // app.use(bodyParser.json());
 
 app.use(express.json());
+app.use(express.static('public'));
 
 // passport
 app.use(passport.initialize());
@@ -81,6 +85,11 @@ app.use('/api/neuro', NeuroExamRoutes);
 app.use('/api/cardio', cardioExamRoutes);
 app.use('/api/investigation', investigationExamRoutes);
 app.use('/api/pediatric', pediatricRoutes);
+app.use('/api/knee', kneeRoutes);
+app.use('/api/upload', uploadRoutes);
+app.use('/api/income', incomeRoutes);
+app.use('/api/expense', expenseRoutes);
+app.use('/api/staff', staffRoutes);
 
 const port = process.env.PORT || 8000;
 
