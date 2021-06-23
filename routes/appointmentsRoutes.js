@@ -7,6 +7,7 @@ const {
   getAllAppointments,
   editAppointment,
   deleteAppointment,
+  editStatus
 } = require("../controller/appointmentController");
 
 router.post(
@@ -19,6 +20,11 @@ router.put(
   passport.authenticate("jwt", { session: false }),
   editAppointment
 );
+router.put(
+  "/edit/status/:id",
+  passport.authenticate("jwt", { session: false }),
+  editStatus
+)
 router.get(
   "/appointments",
   passport.authenticate("jwt", { session: false }),

@@ -3,15 +3,18 @@ const { getDate } = require("../helpers/getDate");
 const Appointment = require("../models/Appointment");
 
 exports.addAppointent = async (req, res) => {
+  console.log(req.body);
   console.log("inside addappointment");
 
-  const date = req.body.start;
-  const start = date;
+  const date = req.body.date;
+  const start = req.body.start;
   const end = req.body.end;
   const allDay = req.body.allDay;
   const title = req.body.title;
+  const notes = req.body.notes;
   const formData = req.body.formData;
-  const patient = formData.patient._id;
+  const patient = req.body.patient._id;
+  const consultant = req.body.consultant;
   const treatment = formData.treatment._id;
 
   const appointmentData = {
@@ -20,8 +23,10 @@ exports.addAppointent = async (req, res) => {
     end,
     allDay,
     title,
+    notes,
     formData,
     treatment,
+    consultant,
     patient,
     user: req.user._id,
   };
@@ -60,6 +65,7 @@ exports.getAppointmentById = (req, res) => {
 
 exports.getAllAppointments = (req, res) => {
   Appointment.find({ user: req.user._id })
+    .populate('patient')
     .then((appointments) => {
       res.json({ appointments });
     })
@@ -68,40 +74,37 @@ exports.getAllAppointments = (req, res) => {
     });
 };
 
-exports.editAppointment = async (req, res) => {
-  const date = req.body.start;
-  const start = date;
-  const end = req.body.end;
-  const allDay = req.body.allDay;
-  const title = req.body.title;
-  const formData = req.body.formData;
-  const patient = formData.patient._id;
-  const treatment = formData.treatment._id;
-
-  const appointmentData = {
-    date,
-    start,
-    end,
-    allDay,
-    title,
-    formData,
-    treatment,
-    patient,
-    user: req.user._id,
-  };
-  const newAppointment = new Appointment(appointmentData);
-  await Appointment.findOneAndUpdate(
+exports.editStatus = async (req, res) => {
+  Appointment.findOneAndUpdate(
     { _id: req.params.id },
-    { $set: newAppointment },
-    { new: true }
-  ).exec();
-  res.json(updatedAppointment);
+    { $set: req.body },
+    { new: true })
+    .then((appointment) => {
+      return res.json({ appointment });
+    })
+    .catch((err) => {
+      return res.status(400).json({ message: "Something went wrong", err });
+    });
+}
+
+exports.editAppointment = async (req, res) => {
+  Appointment.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: req.body },
+    { new: true })
+    .then((appointment) => {
+      return res.json({ appointment });
+    })
+    .catch((err) => {
+      return res.status(400).json({ message: "Something went wrong", err });
+    });
 };
 
 exports.deleteAppointment = (req, res) => {
   console.log("delete called");
   Appointment.findOneAndRemove({ _id: req.params.id })
     .then((appointment) => {
+      console.log('done')
       return res.json({ appointment });
     })
     .catch((err) => {

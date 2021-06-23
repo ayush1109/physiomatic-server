@@ -28,7 +28,8 @@ const incomeRoutes = require('./routes/others/incomeRouter');
 const expenseRoutes = require('./routes/others/expenseRouter');
 const uploadRoutes = require('./routes/uploadRouter');
 const staffRoutes = require('./routes/others/staffRouter');
-
+const physioRoutes = require('./routes/others/physioRouter');
+const randomTreatmentRoutes = require('./routes/others/randomTreatmentRouter');
 
 const app = express();
 // cors
@@ -90,6 +91,8 @@ app.use('/api/upload', uploadRoutes);
 app.use('/api/income', incomeRoutes);
 app.use('/api/expense', expenseRoutes);
 app.use('/api/staff', staffRoutes);
+app.use('/api/physio', physioRoutes);
+app.use('/api/randomTreatment', randomTreatmentRoutes);
 
 const port = process.env.PORT || 8000;
 

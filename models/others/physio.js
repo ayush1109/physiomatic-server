@@ -1,9 +1,7 @@
-
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const staffSchema = new Schema({
+const physioSchema = new Schema({
   name: {
     type: String,
     required: false,
@@ -29,6 +27,6 @@ const staffSchema = new Schema({
 });
 
 module.exports = new mongoose.model(
-  "Staff",
-  staffSchema
+  "Physio",
+  physioSchema
 );

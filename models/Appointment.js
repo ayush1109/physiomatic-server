@@ -19,7 +19,11 @@ const appointmentSchema = new Schema({
   },
   title: {
     type: String,
-    required: true,
+    required: false,
+  },
+  consultant: {
+    type: String,
+    required: false,
   },
   status: {
     type: Number,
@@ -31,19 +35,19 @@ const appointmentSchema = new Schema({
   },
   start: {
     type: Date,
-    required: true,
+    required: false,
   },
   end: {
     type: Date,
-    required: true,
+    required: false,
   },
   allDay: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   formData: {
     type: Object,
-    // required:true
+    // required:false
   },
 });
 module.exports = new mongoose.model("appointment", appointmentSchema);
